@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VoiceLink - Bridging Communities, Driving Change </title>
+    <link rel="stylesheet" href="assets/css/theme.css">
+    <link rel="stylesheet" href="assets/fontawesome-free-6.6.0-web/css/all.css">
+</head>
+<body>
+    <div class="main-container">
+        <div class="header">
+            <div class="nav-bar">
+                <a href="dashboard.html" class="">
+                    
+                    UnityPoint - Your Voice, Our Focus
+                </a>
+                <div class="nav">
+                    <a href="index.html">Home</a>
+                    <a href="index.html">FAQ</a>
+                    <a href="php_includes/login.php" class="nav-cta">Login</a>
+                    <a href="php_includes/register.php" class="nav-cta-outline">Register</a>
+                </div>
+            </div>
+            <div class="header-content main">
+                <h1>Where Every Voice Matters</span></h1>
+                <p>Shape the Future with Us. Your Voice Makes the Difference.</p>
+                <br>
+                <br>
+                <a href="php_includes/login.php" class="btn-outline">Be Part of the Change</a>
+            </div>
+        </div>
+
+        <div class="section">
+            <br>
+            <div class="featured">
+                <div class="container">
+                    <br>
+                    <i class="fa fa-comment circle"></i>
+                    <h2>Pitch Ideas & Share Insights</h2>
+                    <p>Your Role is Crucial. Together, We’ll Shape a Future That Lasts.</p>
+                </div>
+                <div class="container">
+                    <br>
+                    <i class="fa fa-vote-yea circle"></i>
+                    <h2>Cast Your Vote on Public Policies</h2>
+                    <p>Participate Today! Your Voice Shapes the Future of Your Community. Democracy Begins Here.</p>
+                </div>
+                <div class="container">
+                    <br>
+                    <i class="fa fa-users circle"></i>
+                    <h2>Engage in Meetings & Highlight Community Issues</h2>
+                    <p>Together, We Build Better. Share Your Voice and Help Shape a Future We’re Proud to Call Home.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section stats">
+            <h2>The Change We’ve Created</h2>
+            <p>Your Involvement Fuels Citizen Central. Discover the Impact of Your Actions in Shaping Tomorrow.</p>
+            <div class="charts">
+                <!-- Pie Chart -->
+                <div class="chart-container">
+                    <canvas id="pieChart"></canvas>
+                </div>
+                <!-- Line Chart -->
+                <div class="chart-container">
+                    <canvas id="lineChart"></canvas>
+                </div>
+
+                <div class="chart-container">
+                    <canvas id="barChart"></canvas>
+                </div>
+            </div>
+        </div> 
+
+        <div class="section faq">
+            <div class="container">
+                <h2>FAQs</h2>
+                <ol class="faq-content">
+                    <h3><li>Make Your Contribution</li></h3>
+                    <p></p>
+
+                    <h3><li>Your Feedback, Our Next Steps</li></h3>
+                    <p>Your input is thoughtfully considered by our leaders. It helps refine policies, improve community initiatives, and steer future actions for the benefit of all.</p>
+
+                    <h3><li>"Who Oversees This Platform?</li></h3>
+                    <p>Local government officials, community leaders, and trusted moderators manage this platform, ensuring your input is valued and everything runs effectively.</p>
+                </ol>
+            </div>
+        </div>       
+
+        <div class="section cta">
+            <a href="php_includes/login.php" class="btn">Lead the Change</a>
+        </div>
+
+        <div class="footer container">
+            <p>Copyright &copy; 2024. All Rights Reserved.</p>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Fetch data from the PHP script
+        fetch('php_includes/fetch.php')
+            .then(response => response.json())
+            .then(data => {
+                if (data.error) {
+                    console.error(data.error);
+                    return;
+                }
+    
+                // Data for the Pie Chart
+                const pieData = {
+                    labels: ['Projects Completed', 'Projects In-progress'],
+                    datasets: [{
+                        data: [data.projects.completedProjects, data.projects.ongoingProjects],
+                        backgroundColor: ['#6e5796', '#dcd4ec'], // Primary colors
+                        hoverBackgroundColor: ['#6e5796', '##dcd4ec'] // Primary colors
+                    }]
+                };
+    
+                // Data for the Line Chart
+                const engagementLabels = data.engagement.map(item => item.month);
+                const engagementCounts = data.engagement.map(item => item.engagementCount);
+    
+                const lineData = {
+                    labels: engagementLabels,
+                    datasets: [{
+                        label: 'User Engagement',
+                        data: engagementCounts,
+                        fill: false,
+                        borderColor: '#39285b', // Dark color for the line
+                        tension: 0.1
+                    }]
+                };
+    
+                // Data for the Bar Chart
+                const roleLabels = data.roles.map(item => item.role);
+                const roleCounts = data.roles.map(item => item.count);
+    
+                const barData = {
+                    labels: roleLabels,
+                    datasets: [{
+                        label: 'Number of Users',
+                        data: roleCounts,
+                        backgroundColor: '#dcd4ec', // Light color for bars
+                        borderColor: '#6f4eb0', // Primary_other for border color
+                        borderWidth: 1 // Optional: to enhance the visual
+                    }]
+                };
+    
+                // Create the charts
+                const ctxPie = document.getElementById('pieChart').getContext('2d');
+                const pieChart = new Chart(ctxPie, {
+                    type: 'pie',
+                    data: pieData,
+                    options: {
+                        responsive: true,
+                        plugins: {
+                            legend: {
+                                position: 'top',
+                            },
+                        },
+                    },
+                });
+    
+                const ctxLine = document.getElementById('lineChart').getContext('2d');
+                const lineChart = new Chart(ctxLine, {
+                    type: 'line',
+                    data: lineData,
+                    options: {
+                        responsive: true,
+                        plugins: {
+                            legend: {
+                                display: true,
+                            },
+                            tooltip: {
+                                backgroundColor: '#6e5796', // Light primary color for tooltip
+                            }
+                        },
+                        scales: {
+                            x: {
+                                grid: {
+                                    color: '#dcd4ec' // Light color for grid
+                                }
+                            },
+                            y: {
+                                grid: {
+                                    color: '#dcd4ec' // Light color for grid
+                                }
+                            }
+                        }
+                    },
+                });
+    
+                const ctxBar = document.getElementById('barChart').getContext('2d');
+                const barChart = new Chart(ctxBar, {
+                    type: 'bar',
+                    data: barData,
+                    options: {
+                        responsive: true,
+                        plugins: {
+                            legend: {
+                                display: true,
+                            },
+                            tooltip: {
+                                backgroundColor: '#6e5796', // Light primary color for tooltip
+                            }
+                        },
+                    },
+                });
+            })
+            .catch(error => console.error('Error fetching data:', error));
+    </script>              
+</body>
+</html>

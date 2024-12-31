@@ -1,0 +1,297 @@
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+}
+
+h1, h2, h3, h4 {
+    color: #333;
+}
+
+/* Main Container */
+.main-container {
+    display: flex;
+    height: 100vh;
+    flex-direction: column;
+}
+
+/* Header */
+.header {
+    background-color: #283593;
+    color: white;
+    padding: 15px 30px;
+}
+
+.nav-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-bar a {
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+}
+
+.nav-bar .user {
+    display: flex;
+    align-items: center;
+}
+
+.nav-bar .icons {
+    margin-right: 15px;
+}
+
+.icon {
+    font-size: 20px;
+    margin-left: 15px;
+    cursor: pointer;
+}
+
+.circle {
+    font-size: 35px;
+    margin-left: 10px;
+}
+
+.nav-bar p {
+    font-size: 14px;
+    margin-right: 10px;
+}
+
+/* Side Panel */
+.side-panel {
+    width: 250px;
+    background-color: #ffffff;
+    padding: 20px;
+    box-shadow: 2px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.side-panel h3 {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.side-panel .links {
+    margin-top: 20px;
+}
+
+.dash-link {
+    display: block;
+    padding: 12px;
+    margin-bottom: 8px;
+    font-size: 14px;
+    color: #333;
+    background-color: #f4f4f4;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.dash-link:hover,
+.dash-link.active {
+    background-color: #283593;
+    color: white;
+}
+
+.dash-link.active {
+    font-weight: bold;
+}
+
+.btn-submit {
+    background-color: #283593;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-submit:hover {
+    background-color: #1e2a7b;
+}
+
+.sub {
+    background-color: #ff3d00;
+}
+
+.sub:hover {
+    background-color: #e63600;
+}
+
+.side-panel .menu-btn {
+    font-size: 28px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+/* Main Panel */
+.main-panel {
+    flex: 1;
+    padding: 30px;
+}
+
+.panel-section {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.panel-section h1 {
+    font-size: 28px;
+    margin-bottom: 15px;
+}
+
+.panel-section p {
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+hr {
+    margin: 20px 0;
+    border: 0;
+    border-top: 2px solid #e4e4e4;
+}
+
+/* Post Item */
+.post-item {
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.post-head {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.post-head i {
+    font-size: 30px;
+    margin-right: 10px;
+}
+
+.post-head h4 {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.highlight {
+    color: #283593;
+    font-style: italic;
+}
+
+.post-body {
+    margin-bottom: 15px;
+}
+
+.post-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.post-footer .icon {
+    font-size: 16px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.user-feed textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.user-feed .btn-submit {
+    width: auto;
+}
+
+/* Notifications */
+.notifications-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.notification-item {
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.notification-item .indicator {
+    width: 8px;
+    height: 100%;
+    background-color: #283593;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+.notification-icon {
+    font-size: 30px;
+    margin-right: 15px;
+}
+
+.notification-content {
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.notification-actions a {
+    font-size: 14px;
+    margin-right: 10px;
+    color: #283593;
+    transition: color 0.3s ease;
+}
+
+.notification-actions a:hover {
+    color: #ff3d00;
+}
+
+.notification-actions .btn-submit {
+    padding: 5px 10px;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .main-container {
+        flex-direction: column;
+    }
+
+    .side-panel {
+        width: 100%;
+        padding: 15px;
+    }
+
+    .main-panel {
+        padding: 15px;
+    }
+
+    .notifications-grid {
+        grid-template-columns: 1fr;
+    }
+}
